@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "E:\\Api\\MiApi\\Blogs\\ApiBlogs\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2222672B-2976-41AB-BDCD-6D1F9FBDF27F}|Blogs.csproj|e:\\api\\miapi\\blogs\\apiblogs\\controllers\\entradacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2222672B-2976-41AB-BDCD-6D1F9FBDF27F}|Blogs.csproj|solutionrelative:controllers\\entradacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2222672B-2976-41AB-BDCD-6D1F9FBDF27F}|Blogs.csproj|e:\\api\\miapi\\blogs\\apiblogs\\enum\\estadoentradaenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2222672B-2976-41AB-BDCD-6D1F9FBDF27F}|Blogs.csproj|solutionrelative:enum\\estadoentradaenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2222672B-2976-41AB-BDCD-6D1F9FBDF27F}|Blogs.csproj|e:\\api\\miapi\\blogs\\apiblogs\\repository\\entradarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2222672B-2976-41AB-BDCD-6D1F9FBDF27F}|Blogs.csproj|solutionrelative:repository\\entradarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2222672B-2976-41AB-BDCD-6D1F9FBDF27F}|Blogs.csproj|e:\\api\\miapi\\blogs\\apiblogs\\models\\entrada.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2222672B-2976-41AB-BDCD-6D1F9FBDF27F}|Blogs.csproj|solutionrelative:models\\entrada.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2222672B-2976-41AB-BDCD-6D1F9FBDF27F}|Blogs.csproj|e:\\api\\miapi\\blogs\\apiblogs\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2222672B-2976-41AB-BDCD-6D1F9FBDF27F}|Blogs.csproj|solutionrelative:data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2222672B-2976-41AB-BDCD-6D1F9FBDF27F}|Blogs.csproj|e:\\api\\miapi\\blogs\\apiblogs\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2222672B-2976-41AB-BDCD-6D1F9FBDF27F}|Blogs.csproj|solutionrelative:controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2222672B-2976-41AB-BDCD-6D1F9FBDF27F}|Blogs.csproj|e:\\api\\miapi\\blogs\\apiblogs\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2222672B-2976-41AB-BDCD-6D1F9FBDF27F}|Blogs.csproj|solutionrelative:models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,43 +34,105 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "E:\\Api\\MiApi\\Blogs\\ApiBlogs\\Models\\Usuario.cs",
-              "RelativeDocumentMoniker": "Models\\Usuario.cs",
-              "ToolTip": "E:\\Api\\MiApi\\Blogs\\ApiBlogs\\Models\\Usuario.cs",
-              "RelativeToolTip": "Models\\Usuario.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-21T01:44:55.202Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UsuarioController.cs",
-              "DocumentMoniker": "E:\\Api\\MiApi\\Blogs\\ApiBlogs\\Controllers\\UsuarioController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UsuarioController.cs",
-              "ToolTip": "E:\\Api\\MiApi\\Blogs\\ApiBlogs\\Controllers\\UsuarioController.cs",
-              "RelativeToolTip": "Controllers\\UsuarioController.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAxwBsAAAAJAAAA",
+              "Title": "EstadoEntradaEnum.cs",
+              "DocumentMoniker": "E:\\Api\\MiApi\\Blogs\\ApiBlogs\\Enum\\EstadoEntradaEnum.cs",
+              "RelativeDocumentMoniker": "Enum\\EstadoEntradaEnum.cs",
+              "ToolTip": "E:\\Api\\MiApi\\Blogs\\ApiBlogs\\Enum\\EstadoEntradaEnum.cs",
+              "RelativeToolTip": "Enum\\EstadoEntradaEnum.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-20T23:30:53.827Z"
+              "WhenOpened": "2024-07-22T23:07:18.811Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "DataContext.cs",
               "DocumentMoniker": "E:\\Api\\MiApi\\Blogs\\ApiBlogs\\Data\\DataContext.cs",
               "RelativeDocumentMoniker": "Data\\DataContext.cs",
               "ToolTip": "E:\\Api\\MiApi\\Blogs\\ApiBlogs\\Data\\DataContext.cs",
               "RelativeToolTip": "Data\\DataContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAA0AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-20T23:21:30.016Z",
+              "WhenOpened": "2024-07-22T22:57:22.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Entrada.cs",
+              "DocumentMoniker": "E:\\Api\\MiApi\\Blogs\\ApiBlogs\\Models\\Entrada.cs",
+              "RelativeDocumentMoniker": "Models\\Entrada.cs",
+              "ToolTip": "E:\\Api\\MiApi\\Blogs\\ApiBlogs\\Models\\Entrada.cs",
+              "RelativeToolTip": "Models\\Entrada.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAkAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T22:55:54.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EntradaRepository.cs",
+              "DocumentMoniker": "E:\\Api\\MiApi\\Blogs\\ApiBlogs\\Repository\\EntradaRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\EntradaRepository.cs",
+              "ToolTip": "E:\\Api\\MiApi\\Blogs\\ApiBlogs\\Repository\\EntradaRepository.cs",
+              "RelativeToolTip": "Repository\\EntradaRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAewBIAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T22:53:25.907Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EntradaController.cs",
+              "DocumentMoniker": "E:\\Api\\MiApi\\Blogs\\ApiBlogs\\Controllers\\EntradaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\EntradaController.cs",
+              "ToolTip": "E:\\Api\\MiApi\\Blogs\\ApiBlogs\\Controllers\\EntradaController.cs",
+              "RelativeToolTip": "Controllers\\EntradaController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAuwB0AAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T21:13:16.107Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "a8b77ec8-24ea-4713-a27b-17a0686d4281",
+        "Display": 1,
+        "X": 187,
+        "Y": 205,
+        "Width": 1554,
+        "Height": 767,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "E:\\Api\\MiApi\\Blogs\\ApiBlogs\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsuarioController.cs",
+              "ToolTip": "E:\\Api\\MiApi\\Blogs\\ApiBlogs\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "Controllers\\UsuarioController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA0AAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T19:48:34.069Z",
               "EditorCaption": ""
             }
           ]

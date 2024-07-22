@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Blogs.Models;
+using Blogs.Repository;
 
 namespace Blogs.Controllers
 {
@@ -10,31 +11,37 @@ namespace Blogs.Controllers
     public class UsuarioController : Controller
     {
         private readonly DataContext _context;
+        public readonly UsuarioRepository _usuarioRepository;
 
-        public UsuarioController(DataContext context)
+        public UsuarioController(UsuarioRepository usuarioRepository)
         {
-            _context = context;
-        }
-
-        [HttpGet]
-        public string GetNombre()
-        {
-            return "mauro";
+            _usuarioRepository = usuarioRepository;
         }
 
         [HttpGet("{Usuario}")]
-        //public IActionResult GetUsuario(string usuarioNombre)
         public Usuario GetUsuario()
         {
             return _context.Usuario.FirstOrDefault();
         }
 
         [HttpPost]
-        public void PostUsuario(string nombre, string tipoUsuario, bool autentificado = false) 
+        public void PostUsuario(string nombre, string tipoUsuario, bool autentificado)
         {
-            _context.Usuario.Add(new Usuario() {nombre = nombre, tipoUsuario = tipoUsuario, autentificado = autentificado});
+            //Aca validaria el tipo de usuario pero que tampoco seria necesario si usamos un Combo que me deje elegir.
 
-            _context.SaveChanges();
+            if (_usuarioRepository.UsuarioExiste(nombre))
+            {
+                Console.WriteLine("Usuario existente.");
+            }
+            else
+            {
+                _usuarioRepository.SaveUsuario(new Usuario()
+                {
+                    nombre = nombre,
+                    tipoUsuario = tipoUsuario,
+                    autentificado = autentificado
+                });
+            }
         }
     }
 }

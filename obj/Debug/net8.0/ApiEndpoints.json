@@ -1,20 +1,53 @@
 [
   {
-    "ContainingType": "Blogs.Controllers.UsuarioController",
-    "Method": "GetNombre",
-    "RelativePath": "api/Usuario",
+    "ContainingType": "Blogs.Models.Context",
+    "Method": "GetUsuarioLogeado",
+    "RelativePath": "api/Context",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "nombreUsuario",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": [
       {
-        "Type": "System.String",
+        "Type": "Blogs.Models.Usuario",
         "MediaTypes": [
           "text/plain",
           "application/json",
           "text/json"
         ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Blogs.Controllers.EntradaController",
+    "Method": "SaveEntradaNueva",
+    "RelativePath": "api/Entrada",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "textoNuevaEntrada",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "nombreUsuarioLogeo",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
         "StatusCode": 200
       }
     ]
