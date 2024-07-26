@@ -1,5 +1,7 @@
 ﻿using Blogs.Data;
+using Blogs.Enum;
 using Blogs.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Blogs.Repository
 {
@@ -16,6 +18,23 @@ namespace Blogs.Repository
         {
             _context.Entrada.Add(entrada);
             _context.SaveChanges();
+        }
+
+        public void UpdateEntrada()
+        {
+            _context.SaveChanges();
+        }
+
+        [HttpGet]
+        public List<Entrada> GetEntradasByEstado(string estadoEntrada)
+        {
+            return _context.Entrada.Where(p => p.estado == estadoEntrada).ToList();
+        }
+
+        [HttpGet]
+        public Entrada GetEntradaById(int id)
+        {
+            return _context.Entrada.First(p => p.id == id);
         }
 
         //public bool EntradaExiste(string entrada)

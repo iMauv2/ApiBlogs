@@ -14,12 +14,5 @@ namespace Blogs.Models
         {
             _usuarioRepository = usuarioRepository;
         }
-
-        [HttpGet]
-        public Usuario GetUsuarioLogeado(string nombreUsuario)
-        {
-            _usuario = _usuarioRepository.GetUsuarioByName(nombreUsuario);
-            return _usuario;
-        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Blogs.Enum;
+﻿using Blogs.Dto;
+using Blogs.Enum;
+using Blogs.Helper;
 using Blogs.Models;
 using Blogs.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +22,7 @@ namespace Blogs.Controllers
         }
 
         [HttpPost]
+        [Route("CrearEntrada")]
         public void SaveEntradaNueva(string textoNuevaEntrada, string nombreUsuarioLogeo)
         {
             Usuario usuario = _usuarioRepository.GetUsuarioByName(nombreUsuarioLogeo);
@@ -28,8 +31,34 @@ namespace Blogs.Controllers
             {
                 estado = EstadoEntradaEnum.Pendiente.ToString(),
                 texto = textoNuevaEntrada,
-                id_Usuario = usuario.id
+                id_Usuario = usuario.id,
+                fechaIngreso = DateTime.Now
             });
         }
-    }
+
+        //[HttpGet]
+        //[Route("GetListasSegunEstado")]
+        //public List<Entrada> GetListaEntradasSegunEstado(string estado)
+        //{   //se me ocurrio que en vez de traer solo las pendientes traigan segun el input
+        //    return _entradaRepository.GetEntradasByEstado(estado);
+        //}
+
+        [HttpGet]
+        [Route("GetListaEntradasPendientes")]
+        public List<EntradasPendientesDto> GetEntradasPendientes()
+        {
+            return ToolKit.GetEntradaDto(_entradaRepository, _usuarioRepository);
+        }
+
+        [HttpPut]
+        [Route("CambiarEstado")]
+        public void PutCambioEstado(string estadoNuevo, int idEntrada)
+        {
+            Entrada entrada = _entradaRepository.GetEntradaById(idEntrada);
+
+            entrada.estado = estadoNuevo;
+
+            _entradaRepository.UpdateEntrada();
+        }
+    } 
 }

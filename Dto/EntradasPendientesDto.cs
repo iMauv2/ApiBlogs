@@ -1,19 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Blogs.Models
+namespace Blogs.Dto
 {
-    public class Entrada
+    public class EntradasPendientesDto
     {
         [Key]
-        public int id { get; set; }
+        public int id_Entrada {  get; set; }
 
-        public int id_Usuario { get; set; }
-
-        public string estado {  get; set; }
+        public string nombreUsuario {  get; set; }
 
         public string texto { get; set; }
 
         public DateTime fechaIngreso { get; set; }
     }
 }
-

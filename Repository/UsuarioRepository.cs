@@ -1,6 +1,7 @@
 ﻿using Blogs.Data;
 using Blogs.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Blogs.Repository
 {
@@ -18,6 +19,12 @@ namespace Blogs.Repository
             Usuario usuario = _context.Usuario.Where(p => p.nombre == nombreUsuario).FirstOrDefault();
 
             return usuario;
+        }
+
+        [HttpGet]
+        public List<Usuario> GetAllUsuarios()
+        {
+            return _context.Usuario.ToList();
         }
 
         public void SaveUsuario(Usuario usuario)
