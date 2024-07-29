@@ -1,28 +1,92 @@
 [
   {
-    "ContainingType": "Blogs.Controllers.UsuarioController",
-    "Method": "GetNombre",
-    "RelativePath": "api/Usuario",
+    "ContainingType": "Blogs.Controllers.EntradaController",
+    "Method": "PutCambioEstado",
+    "RelativePath": "api/Entrada/CambiarEstado",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "estadoNuevo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "idEntrada",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Blogs.Controllers.EntradaController",
+    "Method": "SaveEntradaNueva",
+    "RelativePath": "api/Entrada/CrearEntrada",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "textoNuevaEntrada",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Blogs.Controllers.EntradaController",
+    "Method": "GetEntradasPendientes",
+    "RelativePath": "api/Entrada/GetListaEntradasPendientes",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": [
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Blogs.Controllers.UsuarioController",
+    "Method": "GetUsuario",
+    "RelativePath": "api/Usuario/GetUsuario",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
+        "Name": "nombreUsuario",
         "Type": "System.String",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "IsRequired": false
       }
-    ]
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Blogs.Controllers.UsuarioController",
+    "Method": "Logeo",
+    "RelativePath": "api/Usuario/Logeo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Blogs.Controllers.UsuarioController",
     "Method": "PostUsuario",
-    "RelativePath": "api/Usuario",
+    "RelativePath": "api/Usuario/Registrarse",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -41,60 +105,13 @@
         "Name": "autentificado",
         "Type": "System.Boolean",
         "IsRequired": false
+      },
+      {
+        "Name": "contrase\u00F1a",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Blogs.Controllers.UsuarioController",
-    "Method": "GetUsuario",
-    "RelativePath": "api/Usuario/{Usuario}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Usuario",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Blogs.Models.Usuario",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Blogs.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Blogs.WeatherForecast, Blogs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   }
 ]

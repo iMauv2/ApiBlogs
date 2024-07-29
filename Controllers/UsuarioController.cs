@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Blogs.Models;
+using Blogs.Repository;
+using Microsoft.AspNetCore.HttpLogging;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Blogs.Controllers
 {
@@ -9,32 +12,85 @@ namespace Blogs.Controllers
     [Route("api/[controller]")]
     public class UsuarioController : Controller
     {
-        private readonly DataContext _context;
+        public readonly UsuarioRepository _usuarioRepository;
 
-        public UsuarioController(DataContext context)
+        public UsuarioController(UsuarioRepository usuarioRepository)
         {
-            _context = context;
+            _usuarioRepository = usuarioRepository;
         }
 
         [HttpGet]
-        public string GetNombre()
+        [Route("GetUsuario")]
+        public IActionResult GetUsuario(string nombreUsuario)
         {
-            return "mauro";
-        }
+            try
+            {
+                if (_usuarioRepository.UsuarioExiste(nombreUsuario))
+                {
+                    Usuario usuario = _usuarioRepository.GetUsuario(nombreUsuario);
 
-        [HttpGet("{Usuario}")]
-        //public IActionResult GetUsuario(string usuarioNombre)
-        public Usuario GetUsuario()
-        {
-            return _context.Usuario.FirstOrDefault();
+                    return Ok(usuario);
+                }
+                else
+                {
+                    return StatusCode(422, "Usuario no encontrado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost]
-        public void PostUsuario(string nombre, string tipoUsuario, bool autentificado = false) 
+        [Route("Registrarse")]
+        public IActionResult PostUsuario(string nombre, string tipoUsuario, bool autentificado, int contraseña)
         {
-            _context.Usuario.Add(new Usuario() {nombre = nombre, tipoUsuario = tipoUsuario, autentificado = autentificado});
+            try
+            {
+                if (_usuarioRepository.UsuarioExiste(nombre))
+                {
+                    return StatusCode(422, "Usuario existente");
+                }
+                else
+                {
+                    _usuarioRepository.SaveUsuario(new Usuario()
+                    {
+                        nombre = nombre,
+                        tipoUsuario = tipoUsuario,
+                        autentificado = autentificado,
+                        contraseña = contraseña
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
-            _context.SaveChanges();
+            return Ok("Usuario registrado");
+        }
+
+        [HttpPost]
+        [Route("Logeo")]
+        public IActionResult Logeo(string username, string password)
+        {
+            try
+            {
+                if (_usuarioRepository.UsuarioExiste(username))
+                {
+                    Login.SetInstance(_usuarioRepository.GetUsuario(username));
+                    return Ok("Ingreso exitoso.");
+                }
+                else
+                {
+                    return StatusCode(422, "Usuario o contraseña incorrectos.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

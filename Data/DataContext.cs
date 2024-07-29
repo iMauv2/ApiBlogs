@@ -10,17 +10,6 @@ namespace Blogs.Data
         }
 
         public DbSet<Usuario> Usuario { get; set; }
-
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
-
-        //    modelBuilder.Entity<Usuario>(entity =>
-        //    {
-        //        entity.HasKey(e => e.id);
-        //        entity.Property(e => e.id).ValueGeneratedOnAdd();
-        //    });
-        //}
-
+        public DbSet<Entrada> Entrada { get; set;}
     }
 }
