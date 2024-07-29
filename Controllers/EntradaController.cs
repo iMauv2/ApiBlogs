@@ -3,6 +3,7 @@ using Blogs.Enum;
 using Blogs.Helper;
 using Blogs.Models;
 using Blogs.Repository;
+using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blogs.Controllers
@@ -13,52 +14,70 @@ namespace Blogs.Controllers
     {
         private readonly EntradaRepository _entradaRepository;
         private readonly UsuarioRepository _usuarioRepository;
-        //private readonly Context _context;
-        public EntradaController(EntradaRepository entradaRepository, UsuarioRepository usuarioRepository/*, Context context*/)
+
+        public EntradaController(EntradaRepository entradaRepository, UsuarioRepository usuarioRepository)
         {
             _entradaRepository = entradaRepository;
             _usuarioRepository = usuarioRepository;
-            //_context = context;
         }
 
         [HttpPost]
         [Route("CrearEntrada")]
-        public void SaveEntradaNueva(string textoNuevaEntrada, string nombreUsuarioLogeo)
+        public IActionResult SaveEntradaNueva(string textoNuevaEntrada)
         {
-            Usuario usuario = _usuarioRepository.GetUsuarioByName(nombreUsuarioLogeo);
-
-            _entradaRepository.SaveEntrada(new Entrada()
+            try
             {
-                estado = EstadoEntradaEnum.Pendiente.ToString(),
-                texto = textoNuevaEntrada,
-                id_Usuario = usuario.id,
-                fechaIngreso = DateTime.Now
-            });
-        }
+                if (Login.GetInstance != null)
+                {
+                    _entradaRepository.SaveEntrada(new Entrada()
+                    {
+                        estado = EstadoEntradaEnum.Pendiente.ToString(),
+                        texto = textoNuevaEntrada,
+                        id_Usuario = 1, // lo correcto seria poder acceder al usuario ingresado
+                        fechaIngreso = DateTime.Now
+                    });
+                }
 
-        //[HttpGet]
-        //[Route("GetListasSegunEstado")]
-        //public List<Entrada> GetListaEntradasSegunEstado(string estado)
-        //{   //se me ocurrio que en vez de traer solo las pendientes traigan segun el input
-        //    return _entradaRepository.GetEntradasByEstado(estado);
-        //}
+                return Ok("Entrada creada.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         [HttpGet]
         [Route("GetListaEntradasPendientes")]
-        public List<EntradasPendientesDto> GetEntradasPendientes()
+        public IActionResult GetEntradasPendientes()
         {
-            return ToolKit.GetEntradaDto(_entradaRepository, _usuarioRepository);
+            try
+            {
+                var entradasPendientes = ToolKit.GetEntradaDto(_entradaRepository, _usuarioRepository);
+
+                return Ok(entradasPendientes);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut]
         [Route("CambiarEstado")]
-        public void PutCambioEstado(string estadoNuevo, int idEntrada)
+        public IActionResult PutCambioEstado(string estadoNuevo, int idEntrada)
         {
-            Entrada entrada = _entradaRepository.GetEntradaById(idEntrada);
+            try
+            {
+                _entradaRepository.GetEntradaById(idEntrada).estado = estadoNuevo;
 
-            entrada.estado = estadoNuevo;
+                _entradaRepository.UpdateEntrada();
 
-            _entradaRepository.UpdateEntrada();
+                return Ok("Entrada Actualizada.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
-    } 
+    }
 }

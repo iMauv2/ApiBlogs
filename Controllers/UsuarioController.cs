@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Blogs.Models;
 using Blogs.Repository;
+using Microsoft.AspNetCore.HttpLogging;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Blogs.Controllers
 {
@@ -10,7 +12,6 @@ namespace Blogs.Controllers
     [Route("api/[controller]")]
     public class UsuarioController : Controller
     {
-        private readonly DataContext _context;
         public readonly UsuarioRepository _usuarioRepository;
 
         public UsuarioController(UsuarioRepository usuarioRepository)
@@ -18,29 +19,77 @@ namespace Blogs.Controllers
             _usuarioRepository = usuarioRepository;
         }
 
-        [HttpGet("{Usuario}")]
-        public Usuario GetUsuario()
+        [HttpGet]
+        [Route("GetUsuario")]
+        public IActionResult GetUsuario(string nombreUsuario)
         {
-            return _context.Usuario.FirstOrDefault();
+            try
+            {
+                if (_usuarioRepository.UsuarioExiste(nombreUsuario))
+                {
+                    Usuario usuario = _usuarioRepository.GetUsuario(nombreUsuario);
+
+                    return Ok(usuario);
+                }
+                else
+                {
+                    return StatusCode(422, "Usuario no encontrado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost]
-        public void PostUsuario(string nombre, string tipoUsuario, bool autentificado)
+        [Route("Registrarse")]
+        public IActionResult PostUsuario(string nombre, string tipoUsuario, bool autentificado, int contraseña)
         {
-            //Aca validaria el tipo de usuario pero que tampoco seria necesario si usamos un Combo que me deje elegir.
-
-            if (_usuarioRepository.UsuarioExiste(nombre))
+            try
             {
-                Console.WriteLine("Usuario existente.");
-            }
-            else
-            {
-                _usuarioRepository.SaveUsuario(new Usuario()
+                if (_usuarioRepository.UsuarioExiste(nombre))
                 {
-                    nombre = nombre,
-                    tipoUsuario = tipoUsuario,
-                    autentificado = autentificado
-                });
+                    return StatusCode(422, "Usuario existente");
+                }
+                else
+                {
+                    _usuarioRepository.SaveUsuario(new Usuario()
+                    {
+                        nombre = nombre,
+                        tipoUsuario = tipoUsuario,
+                        autentificado = autentificado,
+                        contraseña = contraseña
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            return Ok("Usuario registrado");
+        }
+
+        [HttpPost]
+        [Route("Logeo")]
+        public IActionResult Logeo(string username, string password)
+        {
+            try
+            {
+                if (_usuarioRepository.UsuarioExiste(username))
+                {
+                    Login.SetInstance(_usuarioRepository.GetUsuario(username));
+                    return Ok("Ingreso exitoso.");
+                }
+                else
+                {
+                    return StatusCode(422, "Usuario o contraseña incorrectos.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }

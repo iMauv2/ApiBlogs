@@ -1,4 +1,5 @@
 ﻿using Blogs.Data;
+using Blogs.Interfaces;
 using Blogs.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -14,14 +15,14 @@ namespace Blogs.Repository
             _context = context;
         }
 
-        public Usuario GetUsuarioByName(string nombreUsuario)
+        public Usuario GetUsuario(string nombreUsuario)
         {
             Usuario usuario = _context.Usuario.Where(p => p.nombre == nombreUsuario).FirstOrDefault();
 
             return usuario;
         }
 
-        [HttpGet]
+        //[HttpGet]
         public List<Usuario> GetAllUsuarios()
         {
             return _context.Usuario.ToList();

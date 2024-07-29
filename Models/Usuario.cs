@@ -12,5 +12,7 @@ namespace Blogs.Models
         public string tipoUsuario { get; set; }
 
         public bool autentificado { get; set; }
+
+        public int contraseña { get; set; }
     }
 }
